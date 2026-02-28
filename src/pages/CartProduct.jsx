@@ -8,7 +8,7 @@ function Cart() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost/Projects/ShoeStore/shoestore-backend/api/cart-products.php`, { credentials: "include" })
+        fetch(`https://shoesstore.infinityfreeapp.com/shoestore-backend/api/cart-products.php`, { credentials: "include" })
             .then(res => res.json())
             .then(data => setCartproducts(data))
             .catch(err => console.error(err));
@@ -18,7 +18,7 @@ function Cart() {
     // handle delete
     const handleDelete = async (cartId) => {
         const DeleteRes = await fetch(
-            `http://localhost/Projects/ShoeStore/shoestore-backend/api/delete-cart-products.php`,
+            `https://shoesstore.infinityfreeapp.com/shoestore-backend/api/delete-cart-products.php`,
             {
                 method: "POST",
                 headers : {"Content-Type" : "application/json"},
@@ -57,7 +57,7 @@ function Cart() {
 
                             {/* Product Image */}
                             <img
-                                src={`http://localhost/Projects/ShoeStore/shoestore-backend/uploads/image/${product.image}`}
+                                src={`https://shoesstore.infinityfreeapp.com/shoestore-backend/uploads/image/${product.image}`}
                                 alt="product"
                                 className="w-24 h-24 object-cover rounded"
                             />

@@ -4,7 +4,7 @@ const Slider = ({autoPlayInterval = 4000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slides, setSlides] = useState([]);
   useEffect(() => {
-    fetch('http://localhost/Projects/ShoeStore/shoestore-backend/api/slider.php')
+    fetch('https://shoesstore.infinityfreeapp.com/shoestore-backend/api/slider.php')
     .then(res => res.json())
     .then(data => setSlides(data))
     .catch(err => console.error("Fetching error.", err));
@@ -41,7 +41,7 @@ const Slider = ({autoPlayInterval = 4000 }) => {
         {slides.map((img, index) => (
           <div key={index} className="w-full flex-shrink-0">
             <img
-              src={`http://localhost/Projects/ShoeStore/shoestore-backend/uploads/image/${img.image}`}
+              src={`https://shoesstore.infinityfreeapp.com/shoestore-backend/uploads/image/${img.image}`}
               alt={`Slide ${index + 1}`}
               className="w-full h-64 md:h-80 lg:h-96 object-cover"
             />

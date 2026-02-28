@@ -8,7 +8,7 @@ function OrderDetail() {
     const navigate = useNavigate();
     
     useEffect(() => {
-        fetch(`http://localhost/Projects/ShoeStore/shoestore-backend/api/order-detail.php?order_id=${orderDetailId}`)
+        fetch(`https://shoesstore.infinityfreeapp.com/shoestore-backend/api/order-detail.php?order_id=${orderDetailId}`)
         .then(res => res.json())
         .then(data => setOrderDetail(data))
         .catch(err => console.error("Error found", err));
@@ -49,7 +49,7 @@ function OrderDetail() {
                     {/* Single Product Item */}
                     <div className="flex items-center justify-between border rounded-lg p-4 bg-gray-50">
                         <div className="flex items-center gap-4">
-                            <img src={`http://localhost/Projects/ShoeStore/shoestore-backend/uploads/image/${orderDetail.image}`} alt="Product" className="w-16 h-16 rounded" />
+                            <img src={`https://shoesstore.infinityfreeapp.com/shoestore-backend/uploads/image/${orderDetail.image}`} alt="Product" className="w-16 h-16 rounded" />
                             <div>
                                 <p className="font-semibold text-gray-800">{orderDetail.name}</p>
                                 <p className="text-gray-600">Quantity: {orderDetail.quantity}</p>

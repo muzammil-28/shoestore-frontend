@@ -9,7 +9,7 @@ function Products() {
     const { categoryId } = useParams();
 
     useEffect(() => {
-    fetch(`http://localhost/Projects/ShoeStore/shoestore-backend/api/products-by-category.php?category_id=${categoryId}`)
+    fetch(`https://shoesstore.infinityfreeapp.com/shoestore-backend/api/products-by-category.php?category_id=${categoryId}`)
       .then(res => res.json())
       .then(data => {
         if (data.status) {
@@ -40,7 +40,7 @@ function Products() {
                                             {Math.floor(((p.old_price - p.new_price) / p.old_price) * 100)}% OFF
                                         </div>
                                         <div>
-                                            <img src={`http://localhost/Projects/ShoeStore/shoestore-backend/uploads/image/${p.image}`} alt={`Product image`} />
+                                            <img src={`https://shoesstore.infinityfreeapp.com/shoestore-backend/uploads/image/${p.image}`} alt={`Product image`} />
                                         </div>
                                         <div>
                                             <h4 className='text-sm font-bold text-center tracking-[1px]'>{p.name}</h4>

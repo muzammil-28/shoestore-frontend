@@ -13,7 +13,7 @@ function Login() {
     e.preventDefault();
     
     const LoginRes = await fetch(
-        `http://localhost/Projects/ShoeStore/shoestore-backend/api/admin/admin-login.php`,
+        `https://shoesstore.infinityfreeapp.com/shoestore-backend/api/admin/admin-login.php`,
         {
             method : "POST",
             headers : {"Content-Type" : "application/json"},

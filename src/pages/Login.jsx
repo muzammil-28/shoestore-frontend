@@ -12,7 +12,7 @@ function Login() {
   let handleSubmit = async (e) => {
     e.preventDefault();
     let res = await fetch(
-      "http://localhost/Projects/ShoeStore/shoestore-backend/api/login.php",
+      "https://shoesstore.infinityfreeapp.com/shoestore-backend/api/login.php",
       {
         method : "POST",
         headers : {"content-type" : "application/json"},

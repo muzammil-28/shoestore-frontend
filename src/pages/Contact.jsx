@@ -11,7 +11,7 @@ function Contact() {
     const handleForm = async (sub) => {
         sub.preventDefault();
         const mailRes = await fetch(
-            `http://localhost/Projects/ShoeStore/shoestore-backend/api/php-mailing/contact-mail.php`,
+            `https://shoesstore.infinityfreeapp.com/shoestore-backend/api/php-mailing/contact-mail.php`,
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

@@ -18,7 +18,7 @@ function ProductDetail() {
   const [isAddToCart, setIsAddToCart] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost/Projects/ShoeStore/shoestore-backend/api/product-detail.php?id=${id}`)
+    fetch(`https://shoesstore.infinityfreeapp.com/shoestore-backend/api/product-detail.php?id=${id}`)
       .then(res => res.json())
       .then(data => {
                     setProductDetail(data);
@@ -35,7 +35,7 @@ function ProductDetail() {
   const handleAddToCart = async () => {
     try{
       const cartRes = await fetch(
-        "http://localhost/Projects/ShoeStore/shoestore-backend/api/add-to-cart.php",
+        "https://shoesstore.infinityfreeapp.com/shoestore-backend/api/add-to-cart.php",
         {
           method : "POST",
           headers : {"Content-Type" : "application/json"},
@@ -109,14 +109,14 @@ function ProductDetail() {
 
               {/* product ki image */}
               <div className='w-full md:h-[350px] overflow-hidden group object-cover'>
-                <img src={`http://localhost/Projects/ShoeStore/shoestore-backend/uploads/image/${mainImage}`} className='group-hover:scale-110 cursor-pointer' />
+                <img src={`https://shoesstore.infinityfreeapp.com/shoestore-backend/uploads/image/${mainImage}`} className='group-hover:scale-110 cursor-pointer' />
               </div>
               <div className="flex gap-3 mt-3 justify-center">
                   {
                     productDetail.image?.map((img, index) => (
                       <img 
                         key={index}
-                        src={`http://localhost/Projects/ShoeStore/shoestore-backend/uploads/image/${img}`}
+                        src={`https://shoesstore.infinityfreeapp.com/shoestore-backend/uploads/image/${img}`}
                         onClick={() => setMainImage(img)} 
                         className={`w-15 h-15 object-cover border rounded cursor-pointer ${mainImage === img ? "border-blue-500" : "border-gray-300"}`}
                       />

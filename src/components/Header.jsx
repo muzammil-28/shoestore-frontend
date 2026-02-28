@@ -11,7 +11,7 @@ function Header() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost/Projects/ShoeStore/shoestore-backend/api/navbar.php")
+        fetch("https://shoesstore.infinityfreeapp.com/shoestore-backend/api/navbar.php")
             .then(res => res.json())
             .then(data => setMenu(data))
             .catch(err => console.error("Fetch error", err));
@@ -24,7 +24,7 @@ function Header() {
     }
 
     useEffect(() => {
-        fetch(`http://localhost/Projects/ShoeStore/shoestore-backend/api/check-login.php`, { credentials: "include" })
+        fetch(`https://shoesstore.infinityfreeapp.com/shoestore-backend/api/check-login.php`, { credentials: "include" })
             .then(res => res.json())
             .then(data => setUserInfo(data.login ? data.user : null))
             .catch(err => console.error(err));
@@ -32,7 +32,7 @@ function Header() {
 
     const handleLogout = async () => {
         try {
-            const logoutRes = await fetch(`http://localhost/Projects/ShoeStore/shoestore-backend/api/logout.php`,
+            const logoutRes = await fetch(`https://shoesstore.infinityfreeapp.com/shoestore-backend/api/logout.php`,
                 {
                     method: "POST",
                     credentials: "include"

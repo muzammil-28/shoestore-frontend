@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function Sidebar({setActiveTab}) {
   const handleLogout = async () => {
     const logoutRes = await fetch(
-      `http://localhost/Projects/ShoeStore/shoestore-backend/api/admin/admin-logout.php`,
+      `https://shoesstore.infinityfreeapp.com/shoestore-backend/api/admin/admin-logout.php`,
       {
         method : "POST",
         credentials : "include"

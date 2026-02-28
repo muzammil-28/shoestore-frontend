@@ -9,16 +9,16 @@ function Dashboard() {
     let url = "";
     switch (tab) {
       case "products":
-        url = `http://localhost/Projects/ShoeStore/shoestore-backend/api/admin/admin-products.php`;
+        url = `https://shoesstore.infinityfreeapp.com/shoestore-backend/api/admin/admin-products.php`;
         break;
       case "orders":
-        url = `http://localhost/Projects/ShoeStore/shoestore-backend/api/admin/admin-orders.php`;
+        url = `https://shoesstore.infinityfreeapp.com/shoestore-backend/api/admin/admin-orders.php`;
         break;
       case "users":
-        url = `http://localhost/Projects/ShoeStore/shoestore-backend/api/admin/admin-users.php`;
+        url = `https://shoesstore.infinityfreeapp.com/shoestore-backend/api/admin/admin-users.php`;
         break;
       case "categories":
-        url = `http://localhost/Projects/ShoeStore/shoestore-backend/api/admin/admin-categories.php`;
+        url = `https://shoesstore.infinityfreeapp.com/shoestore-backend/api/admin/admin-categories.php`;
         break;
       default:
         url = "";

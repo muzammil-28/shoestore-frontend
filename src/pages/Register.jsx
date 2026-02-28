@@ -24,7 +24,7 @@ function Register() {
       return;
     }
     const res = await fetch(
-      "http://localhost/Projects/ShoeStore/shoestore-backend/api/register.php",
+      "https://shoesstore.infinityfreeapp.com/shoestore-backend/api/register.php",
       {
         method : "POST",
         headers : {"content-type" : "application/json"},

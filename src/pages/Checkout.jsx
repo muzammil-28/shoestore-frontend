@@ -1,9 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react"
 function Checkout() {
-    // const  [params ] = useSearchParams();
-    // const type = params.get("type");
-    // const id = params.get("id");
     const { type, id } = useParams();
     const [checkoutData, setCheckoutData] = useState(null);
     
@@ -11,8 +8,7 @@ function Checkout() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // if(!type || !id) return;
-        fetch(`http://localhost/Projects/ShoeStore/shoestore-backend/api/checkout.php?type=${type}&id=${id}`, {credentials : "include"})
+        fetch(`https://shoesstore.infinityfreeapp.com/shoestore-backend/api/checkout.php?type=${type}&id=${id}`, {credentials : "include"})
         .then(res => res.json())
         .then(data => setCheckoutData(data))
         .catch(err => console.error(err));
@@ -22,7 +18,7 @@ function Checkout() {
 
     const handlePlaceOrder = async () => {
         const orderRes = await fetch(
-            `http://localhost/Projects/ShoeStore/shoestore-backend/api/place-order.php`,
+            `https://shoesstore.infinityfreeapp.com/shoestore-backend/api/place-order.php`,
             {
                 method : "POST",
                 headers : {"Content-Type" : "application/json"},
