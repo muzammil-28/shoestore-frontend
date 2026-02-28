@@ -42,7 +42,7 @@ function OrderSuccess() {
                 {/* Buttons */}
                 <div className="flex flex-col gap-3">
                     <button 
-                        onClick={() => navigate("/home")}
+                        onClick={() => navigate("/")}
                         className="bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
                         Continue Shopping
                     </button>

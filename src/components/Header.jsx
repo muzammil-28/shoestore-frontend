@@ -53,7 +53,7 @@ function Header() {
 
                     {/* website ka Logo */}
                     <div>
-                        <Link to={`/home`} className="text-2xl font-bold text-blue-600">ShoeStore</Link>
+                        <Link to={`/`} className="text-2xl font-bold text-blue-600">ShoeStore</Link>
                     </div>
 
                     {/* Desktop Menu */}

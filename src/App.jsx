@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
         <Routes>
-          <Route path='/Home' element={<MainLayout><Home /></MainLayout>}/>
+          <Route path='/' element={<MainLayout><Home /></MainLayout>}/>
           <Route path='/Contact' element={<Contact />} />
           <Route path='/About' element={<About />} />
           <Route path='/search-product' element={<SearchProducts />} />
