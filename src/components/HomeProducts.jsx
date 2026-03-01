@@ -34,7 +34,7 @@ function Products() {
                                         {Math.floor(((p.old_price - p.new_price) / p.old_price) * 100)}% OFF
                                     </div>
                                     <div>
-                                        <img src={`http://localhost/Projects/ShoeStore/shoestore-backend/uploads/image/${p.image}`} alt={`Product image`} />
+                                        <img src={`https://shoesstore.infinityfreeapp.com/shoestore-backend/uploads/image/${p.image}`} alt={`Product image`} />
                                     </div>
                                     <div>
                                         <h4 className='text-sm font-bold text-center tracking-[1px]'>{p.name}</h4>
