@@ -7,7 +7,7 @@ function Products() {
     const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
-        fetch(`shoestore-mi.infinityfreeapp.com/shoestore-backend/api/home-products.php`)
+        fetch(`https://shoestore-mi.infinityfreeapp.com/shoestore-backend/api/home-products.php`)
         .then(res => res.json())
         .then(data => setProduct(data))
         .catch(err => console.error(err));
@@ -19,7 +19,7 @@ function Products() {
             easing : 'ease-in-out'
         });
     }, []);
-    // console.log(product);
+    console.log(product);
     return (
         <div className='mt-5 bg-gray-100 w-full h-full'>
             <div className='py-2 px-10'>
