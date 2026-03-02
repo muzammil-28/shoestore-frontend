@@ -7,7 +7,7 @@ function Products() {
     const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
-        fetch(`https://shoesstore.infinityfreeapp.com/shoestore-backend/api/home-products.php`)
+        fetch(`shoestore-mi.infinityfreeapp.com/shoestore-backend/api/home-products.php`)
         .then(res => res.json())
         .then(data => setProduct(data))
         .catch(err => console.error(err));
