@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/admin/AdminSidebar";
 
 function Dashboard() {
   const [activeTab, setActiceTab] = useState("products");
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   const fetchData = async (tab) => {
     let url = "";
@@ -70,7 +72,9 @@ function Dashboard() {
                 <div>
 
                   <div className="float-right p-2">
-                    <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded-xl cursor-pointer">Add Product +</button>
+                    <button
+                      onClick={() => navigate(`/admin/AddProduct`)}
+                      className="bg-blue-600 text-white px-[20px] py-[5px] rounded-xl cursor-pointer">Add Product +</button>
                   </div>
 
                   <table className="min-w-full divide-y divide-gray-200">
@@ -96,9 +100,9 @@ function Dashboard() {
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.new_price}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.status}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                              <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded">Edit</button>
+                              <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded cursor-pointer">Edit</button>
                               |
-                              <button className="bg-red-500 text-white px-[20px] py-[5px] rounded">Delete</button>
+                              <button className="bg-red-500 text-white px-[20px] py-[5px] rounded cursor-pointer">Delete</button>
                             </td>
                           </tr>
                         ))
@@ -137,9 +141,9 @@ function Dashboard() {
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.status === 0 ? "Pending" : "Deliverd"}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.created_at}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                              <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded">Edit</button>
+                              <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded cursor-pointer">Edit</button>
                               |
-                              <button className="bg-red-500 text-white px-[20px] py-[5px] rounded">Delete</button>
+                              <button className="bg-red-500 text-white px-[20px] py-[5px] rounded cursor-pointer">Delete</button>
                             </td>
                           </tr>
                         ))
@@ -178,9 +182,9 @@ function Dashboard() {
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.password.substring(0, 9)}.....</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.status}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                              <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded">Edit</button>
+                              <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded cursor-pointer">Edit</button>
                               |
-                              <button className="bg-red-500 text-white px-[20px] py-[5px] rounded">Delete</button>
+                              <button className="bg-red-500 text-white px-[20px] py-[5px] rounded cursor-pointer">Delete</button>
                             </td>
                           </tr>
                         ))
@@ -217,9 +221,9 @@ function Dashboard() {
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900"> {item.parent_id}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.status}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                              <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded">Edit</button>
+                              <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded cursor-pointer">Edit</button>
                               |
-                              <button className="bg-red-500 text-white px-[20px] py-[5px] rounded">Delete</button>
+                              <button className="bg-red-500 text-white px-[20px] py-[5px] rounded cursor-pointer">Delete</button>
                             </td>
                           </tr>
                         ))
