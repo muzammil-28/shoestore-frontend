@@ -3,8 +3,24 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 function EditProduct() {
     const { id } = useParams();
-    const [editData, setEditData] = useState("");
+    const [editData, setEditData] = useState({
+        name : "",
+        category_id : "",
+        new_price : "",
+        old_price : "",
+        quantity : "",
+        text : ""
+    });
     const navigate = useNavigate();
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost/Projects/ShoeStore-project/shoestore-backend/api/admin/admin-getCategory.php`)
+        .then(res => res.json())
+        .then(data => setCategories(data))
+        .catch(err => console.error(err));
+    },[]);
+
     // console.log(id);
 
     useEffect(() => {
@@ -34,6 +50,7 @@ function EditProduct() {
                                 type="text"
                                 placeholder="Enter product name"
                                 value={editData.name}
+                                onChange={(val) => setEditData({...editData, name:val.targer.value})}
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
                         </div>
@@ -44,10 +61,16 @@ function EditProduct() {
                                 Category
                             </label>
                             <select
+                                value={editData.category_id}
+                                onChange={(val) => setEditData({...editData, category_id:val.target.value})}
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             >
                                 <option>Select Category</option>
-                                
+                                {
+                                    categories.map((cat) => (
+                                        <option key={cat.id} value={cat.id}>{cat.title}</option>
+                                    ))
+                                }
                             </select>
                         </div>
 
@@ -61,6 +84,8 @@ function EditProduct() {
                                 <input
                                     type="number"
                                     placeholder="Enter price"
+                                    value={editData.old_price}
+                                    onChange={(val) => setEditData({...editData, old_price:val.target.value})}
                                     className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
@@ -72,6 +97,8 @@ function EditProduct() {
                                 <input
                                     type="number"
                                     placeholder="Enter price"
+                                    value={editData.new_price}
+                                    onChange={(val) => setEditData({...editData, new_price:val.target.value})}
                                     className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
@@ -83,6 +110,8 @@ function EditProduct() {
                                 <input
                                     type="number"
                                     placeholder="Enter stock quantity"
+                                    value={editData.quantity}
+                                    onChange={(val) => setEditData({...editData, quantity:val.target.value})}
                                     className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
@@ -97,6 +126,8 @@ function EditProduct() {
                             <textarea
                                 rows="4"
                                 placeholder="Enter product description"
+                                value={editData.text}
+                                onChange={(val) => setEditData({...editData, text:val.target.value})}
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             ></textarea>
                         </div>

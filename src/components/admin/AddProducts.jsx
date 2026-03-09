@@ -16,6 +16,7 @@ function AddProducts() {
     fetch(`http://localhost/Projects/ShoeStore-project/shoestore-backend/api/admin/admin-getCategory.php`)
     .then(res => res.json())
     .then(data => setCategories(data))
+    .catch(err => console.error(err));
   },[]);
   // console.log(category);
   const handleAddProduct = async (e) => {
