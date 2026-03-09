@@ -18,6 +18,8 @@ import CartProduct from './pages/CartProduct'
 import AdminLogin from './pages/Auth/AdminLogin'
 import AdminDashboard from './pages/admin/Dashboard'
 import AddProdct from './components/admin/AddProducts'
+import EditProduct from './components/admin/EditProduct'
+import DeleteProduct from './components/admin/DeleteProduct'
 function App() {
   return (
     <div>
@@ -38,6 +40,8 @@ function App() {
           <Route path='/admin/login' element={<AdminLogin />} />
           <Route path='/admin/dashboard' element={<AdminDashboard />} />
           <Route path='/admin/AddProduct' element={<AddProdct />} />
+          <Route path='/admin/EditProduct/:id' element={<EditProduct />} />
+          <Route path='/admin/DeleteProduct/:id' element={<DeleteProduct />} />
         </Routes>
         <ScrollToTopButton/>
     </div>

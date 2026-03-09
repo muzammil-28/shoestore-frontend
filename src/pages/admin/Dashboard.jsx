@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Sidebar from "../../components/admin/AdminSidebar";
 
 function Dashboard() {
-  const [activeTab, setActiceTab] = useState("products");
+  const [activeTab, setActiveTab] = useState("products");
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ function Dashboard() {
     <div className="flex h-screen bg-gray-100">
 
       {/* Sidebar */}
-      <Sidebar setActiveTab={setActiceTab} />
+      <Sidebar setActiveTab={setActiveTab} />
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
@@ -100,9 +100,13 @@ function Dashboard() {
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.new_price}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.status}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                              <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded cursor-pointer">Edit</button>
+                              <Link to={`/admin/EditProduct/${item.id}`}>
+                                <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded cursor-pointer">Edit</button>
+                              </Link>
                               |
-                              <button className="bg-red-500 text-white px-[20px] py-[5px] rounded cursor-pointer">Delete</button>
+                              <Link to={`/admin/delete-product/${item.id}`}>
+                                <button className="bg-red-500 text-white px-[20px] py-[5px] rounded cursor-pointer">Delete</button>
+                              </Link>
                             </td>
                           </tr>
                         ))
