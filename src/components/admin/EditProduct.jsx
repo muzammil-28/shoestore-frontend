@@ -9,7 +9,7 @@ function EditProduct() {
         new_price : "",
         old_price : "",
         quantity : "",
-        text : ""
+        text : "",
     });
     const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
@@ -21,15 +21,42 @@ function EditProduct() {
         .catch(err => console.error(err));
     },[]);
 
-    // console.log(id);
-
     useEffect(() => {
         fetch(`http://localhost/Projects/ShoeStore-project/shoestore-backend/api/admin/admin-editproduct.php?id=${id}`)
-        .then(res => res.json())
-        .then(data => setEditData(data))
-        .catch(err => console.error(err));
+            .then(res => res.json())
+            .then(data => setEditData(data))
+            .catch(err => console.error(err));
     },[id]);
-    console.log(editData);
+
+    console.log(id);
+
+    // handle change 
+    const handleChange = (val) => {
+        const {name, value} = val.target;
+        setEditData({
+            ...editData,
+            [name]: value
+        });
+    }
+
+    // handle update product 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const editRes = await fetch(
+            `http://localhost/Projects/ShoeStore-project/shoestore-backend/api/admin/admin-editproduct.php?id=${id}`,
+            {
+                method : "POST",
+                headers : {"Content-Type" : "application/json"},
+                body : JSON.stringify(editData),
+            }
+        );
+        const result = await editRes.json();
+        if(result)
+        {
+            navigate(`/admin/dashboard`);
+        }
+        console.log(result);
+    }
     return (
         <div>
             <div className="min-h-screen bg-gray-100 p-6">
@@ -39,7 +66,7 @@ function EditProduct() {
                         Edit Product
                     </h2>
 
-                    <form className="space-y-6">
+                    <form className="space-y-6" onSubmit={handleSubmit}>
 
                         {/* Product Name */}
                         <div>
@@ -49,8 +76,9 @@ function EditProduct() {
                             <input
                                 type="text"
                                 placeholder="Enter product name"
+                                name='name'
                                 value={editData.name}
-                                onChange={(val) => setEditData({...editData, name:val.targer.value})}
+                                onChange={handleChange}
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
                         </div>
@@ -61,8 +89,9 @@ function EditProduct() {
                                 Category
                             </label>
                             <select
+                                name='category_id'
                                 value={editData.category_id}
-                                onChange={(val) => setEditData({...editData, category_id:val.target.value})}
+                                onChange={handleChange}
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             >
                                 <option>Select Category</option>
@@ -84,8 +113,9 @@ function EditProduct() {
                                 <input
                                     type="number"
                                     placeholder="Enter price"
+                                    name='old_price'
                                     value={editData.old_price}
-                                    onChange={(val) => setEditData({...editData, old_price:val.target.value})}
+                                    onChange={handleChange}
                                     className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
@@ -97,8 +127,9 @@ function EditProduct() {
                                 <input
                                     type="number"
                                     placeholder="Enter price"
+                                    name='new_price'
                                     value={editData.new_price}
-                                    onChange={(val) => setEditData({...editData, new_price:val.target.value})}
+                                    onChange={handleChange}
                                     className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
@@ -110,8 +141,9 @@ function EditProduct() {
                                 <input
                                     type="number"
                                     placeholder="Enter stock quantity"
+                                    name='quantity'
                                     value={editData.quantity}
-                                    onChange={(val) => setEditData({...editData, quantity:val.target.value})}
+                                    onChange={handleChange}
                                     className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
@@ -126,8 +158,9 @@ function EditProduct() {
                             <textarea
                                 rows="4"
                                 placeholder="Enter product description"
+                                name='text'
                                 value={editData.text}
-                                onChange={(val) => setEditData({...editData, text:val.target.value})}
+                                onChange={handleChange}
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             ></textarea>
                         </div>
@@ -147,20 +180,15 @@ function EditProduct() {
                         <div className="flex justify-end space-x-4">
                             <button
                                 type="reset"
-                                className="px-6 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 transition"
-                                onClick={() => navigate(`/admin/dashboard`)}
-                            >
+                                className="px-6 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 transition">
                                 Cancel
                             </button>
-
                             <button
                                 type="submit"
-                                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                            >
+                                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
                                 Add Product
                             </button>
                         </div>
-
                     </form>
                 </div>
             </div>
