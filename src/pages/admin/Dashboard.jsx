@@ -39,6 +39,25 @@ function Dashboard() {
     fetchData(activeTab);
   }, [activeTab])
 
+  // product delete krne ka code 
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Are you sure want to delete this product.");
+    if(!confirmDelete) return;
+
+    const deleteRes = await fetch(
+      `http://localhost/Projects/ShoeStore-project/shoestore-backend/api/admin/admin-deleteproduct.php?id=${id}`,
+      {
+        method: "POST"
+      }
+    );
+    const deleteData = await deleteRes.json();
+    if(deleteData.status)
+    {
+      setData(data.filter(item => item.id != id))
+      console.log("product successfully deleted.");
+    }
+  }
+
   return (
     <div className="flex h-screen bg-gray-100">
 
@@ -104,9 +123,7 @@ function Dashboard() {
                                 <button className="bg-blue-600 text-white px-[20px] py-[5px] rounded cursor-pointer">Edit</button>
                               </Link>
                               |
-                              <Link to={`/admin/delete-product/${item.id}`}>
-                                <button className="bg-red-500 text-white px-[20px] py-[5px] rounded cursor-pointer">Delete</button>
-                              </Link>
+                              <button onClick={() => handleDelete(item.id)} className="bg-red-500 text-white px-[20px] py-[5px] rounded cursor-pointer">Delete</button>
                             </td>
                           </tr>
                         ))
